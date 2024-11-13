@@ -1,0 +1,18 @@
+{
+  "name": "clima-app",
+  "version": "0.0.1",
+  "description": "Una aplicacion del clima mediante consola con node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": " node index.js"
+  },
+  "author": "Roger Armando Chan Ac",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "colors": "^1.4.0",
+    "dotenv": "^16.4.5",
+    "inquirer": "^7.3.3"
+  }
+}
