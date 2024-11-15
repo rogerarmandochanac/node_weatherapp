@@ -1,9 +1,12 @@
+const fs = require("fs");
 const axios = require("axios");
+const { type } = require("os");
 
 class Busqueda{
-
+    historial = undefined;
+    path = "./database/db.json"
     constructor(){
-        let historial = {};
+        this.historial = []; 
     }
 
     async getCiudad(nombre=""){
@@ -48,6 +51,20 @@ class Busqueda{
             max: resp.data.main.temp_max,
             temp: resp.data.main.temp
         }
+    }
+
+    agregarHistorial(lugar=""){
+        this.historial.unshift(lugar);
+        this.saveHistory();
+    }
+
+    saveHistory(){
+        fs.writeFileSync(this.path, JSON.stringify({historial:this.historial}));
+    }
+
+    loadDatabase(){
+        let data = fs.readFileSync(this.path, {encoding: 'utf8'});
+        this.historial = JSON.parse(data).historial
     }
 
 }
